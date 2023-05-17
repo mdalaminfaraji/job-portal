@@ -43,10 +43,10 @@ const Jobs = () => {
     },
   ];
   const [jobs, setJob] = useState([]);
-  const [activeTab, setActiveTab] = useState("remote");
+  const [activeTab, setActiveTab] = useState("d");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allJobsByCategory/${activeTab}`)
+    fetch(`http://localhost:5000/allJobs/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setJob(result);

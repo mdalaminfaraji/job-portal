@@ -14,7 +14,7 @@ const UpdateJobModal = (props) => {
     formState: { errors },
   } = useForm();
 
-  const { handleJobUpdate } = props;
+  const { handlejobupdate } = props;
   //   console.log(handleJobUpdate);
   return (
     <Modal
@@ -34,7 +34,7 @@ const UpdateJobModal = (props) => {
       <Modal.Body>
         <form
           className="container text-center"
-          onSubmit={handleSubmit(handleJobUpdate)}
+          onSubmit={handleSubmit(handlejobupdate)}
         >
           {errors.exampleRequired && <span>This field is required</span>}
           <input

@@ -49,6 +49,18 @@ const MyJobs = () => {
         console.log(result);
       });
   };
+ const handleDelete=(id)=>{
+     console.log(id);
+     fetch(`http://localhost:5000/deleteJob/${id}`,{
+      method:"DELETE",
+     })
+     .then(res=>res.json())
+     .then(data=>console.log(data));
+
+     const remaining=jobs.filter(job=>job._id!=id);
+     setJobs(remaining);
+
+ }
 
   return (
     <div>
@@ -59,7 +71,7 @@ const MyJobs = () => {
             onChange={(e) => setSearchText(e.target.value)}
             type="text"
             className="p-1"
-          />{" "}
+          />{''}
           <button onClick={handleSearch}>Search</button>
         </div>
         <Table striped bordered hover className="container">
@@ -90,12 +102,12 @@ const MyJobs = () => {
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     job={job}
-                    handleJobUpdate={handleJobUpdate}
+                    handlejobupdate={handleJobUpdate}
                   />
                 </td>
                 <td>
                   {" "}
-                  <button>Delete</button>
+                  <button onClick={()=>handleDelete(job._id)}>Delete</button>
                 </td>
               </tr>
             ))}
